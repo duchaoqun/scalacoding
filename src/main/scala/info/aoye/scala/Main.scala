@@ -3,9 +3,7 @@ package info.aoye.scala
 //注意:import语句可以出现在任何地方,而不是只能在文件顶部.import的效果从开始延伸到语句块的结束.这可以大幅减少名称冲突的可能性.
 //注意:默认情况下,scala总会引入java.lang._ scala._ 和 Predef._ 这里也能解释,为什么以scala开头的包,在使用时都是省去scala.的
 
-import java.util.{HashMap => JavaHashMap} //隐藏成员,引入了util包的所有成员,但是HashMap被隐藏了.
-
-import info.aoye.test.TestImplicit
+import java.util.{HashMap => JavaHashMap}
 
 import scala.math._
 
