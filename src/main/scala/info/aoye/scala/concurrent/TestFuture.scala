@@ -7,9 +7,9 @@ import ExecutionContext.Implicits.global
 import scala.util._
 
 trait Student {
-  var students = Map[String, Int]("张三" -> 95, "李四" -> 98)
+  var students: Map[String, Int] = Map("张三" -> 95, "李四" -> 98)
 
-  def addstud(name: String, result: Int) = students += (name -> result)
+  def addstud(name: String, result: Int):Unit = () => students += (name -> result)
 }
 
 class School

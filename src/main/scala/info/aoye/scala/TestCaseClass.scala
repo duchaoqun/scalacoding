@@ -1,6 +1,6 @@
 package info.aoye.scala
 
-case class host(address: String, port: Int)
+case class Host(address: String, port: Int)
 
 case class ABCException(msg: String) extends Exception
 
@@ -13,18 +13,23 @@ case class ABCException(msg: String) extends Exception
   */
 object TestCaseClass extends App {
 
-  // 声明一个对象
-  println(host("127.0.0.1", 65535))
-  println(host.apply(address = "8.8.8.8", port = 2232))
-  val p1 = host("123.123.123.123", 8848)
+  //构建一个对象:实际是调用Host类的伴生对象的apply方法.
+  println(Host("127.0.0.1", 65535))
+  println(Host.apply(address = "8.8.8.8", port = 2232))
+  val p1 = Host("123.123.123.123", 8848)
+  val p2 = Host.apply("8.8.8.8", 8080)
 
-  // 伴生对象自动生成的方法
-  println(host.hashCode())
-  println(host.toString())
-  val p2 = host.equals(p1.getClass)
+  //伴生对象自动生成的方法,
+  println(Host.hashCode())
+  println(Host.toString())
 
-  // 返回一个Some对象
-  val someThing1 = host.unapply(p1)
+  val p3 = p1.isInstanceOf[Host]  //判断对象类型?
+  val p4 = Host.equals()  //? 有待深入学习 ?
+
+  println(p3)
+
+  //获取内容?返回一个Some对象
+  val someThing1 = Host.unapply(p1)
   println(someThing1) //class scala.Some
 
   try {
