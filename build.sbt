@@ -83,6 +83,8 @@ libraryDependencies += "org.apache.kafka" % "kafka-clients" % "0.10.2.1"
 //libraryDependencies += "org.apache.hive" % "hive-jdbc" % "2.1.0"
 libraryDependencies += ("org.apache.hive" % "hive-jdbc" % "1.2.1")
 
+// https://mvnrepository.com/artifact/javax.inject/javax.inject
+libraryDependencies += "javax.inject" % "javax.inject" % "1"
 
 // 发布包合并策略
 // :=是特有方法吗？
