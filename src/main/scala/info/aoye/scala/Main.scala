@@ -16,9 +16,6 @@ object Main {
 
   //程序的入口点
   def main(args: Array[String]): Unit = {
-    val test1 = new TestImplicit
-    implicit val currentTaxRate:Float = 0.08F
-    println(test1.calcTax(5000F))
 
     //Scala中的数学方法
     println(sqrt(2)) //Stdout：1.4142135623730951

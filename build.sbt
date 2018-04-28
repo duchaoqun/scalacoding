@@ -50,9 +50,11 @@ libraryDependencies += "com.typesafe.scala-logging" %% "scala-logging" % "3.8.0"
 // https://mvnrepository.com/artifact/ch.qos.logback/logback-classic
 libraryDependencies += "ch.qos.logback" % "logback-classic" % "1.2.3"
 
-// https://mvnrepository.com/artifact/net.liftweb/lift-json
 // Scala操作Json的包
+// https://mvnrepository.com/artifact/net.liftweb/lift-json
 libraryDependencies += "net.liftweb" %% "lift-json" % "3.2.0"
+// https://mvnrepository.com/artifact/com.typesafe.play/play-json
+libraryDependencies += "com.typesafe.play" %% "play-json" % "2.6.9"
 
 // MySQL驱动
 // https://mvnrepository.com/artifact/mysql/mysql-connector-java

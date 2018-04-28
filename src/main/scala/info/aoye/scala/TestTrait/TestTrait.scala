@@ -30,5 +30,4 @@ object TestTrait extends scala.App {
 
   //todo https://blog.csdn.net/Godfrey1/article/details/70316850
   val boy1 = new Boy
-  boy1.look("")
 }

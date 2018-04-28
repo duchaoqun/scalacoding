@@ -68,4 +68,6 @@ object TestJdbc extends scala.App {
 
   //todo: 如果执行类是一个伴生对象,那么这个连接会持续到什么时候? 程序退出在释放吗?
   conn.close()
+
+  //todo:ResultSets对象转换成Object,封装代码进行解耦合.
 }
