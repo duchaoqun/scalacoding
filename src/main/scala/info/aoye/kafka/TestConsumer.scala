@@ -8,6 +8,7 @@ import org.apache.kafka.common.TopicPartition
 
 /**
   * 测试学习Consumer
+  * 测试
   */
 object TestConsumer extends scala.App {
   //创建配置文件对象
