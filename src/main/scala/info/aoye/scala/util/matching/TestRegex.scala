@@ -2,6 +2,9 @@ package info.aoye.scala.util.matching
 
 import scala.util.matching.Regex
 
+/**
+  * scala 正则表达式使用
+  */
 object TestRegex extends scala.App {
   //使用String类的r()方法构造了一个Regex对象
   val pattern = "Scala".r

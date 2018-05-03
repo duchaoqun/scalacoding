@@ -77,16 +77,22 @@ libraryDependencies += "com.typesafe.akka" %% "akka-actor" % "2.5.11"
 
 libraryDependencies += "com.github.nscala-time" %% "nscala-time" % "2.18.0"
 
-//Kafka包
-// https://mvnrepository.com/artifact/org.apache.kafka/kafka-clients
+// https://mvnrepository.com/artifact/org.apache.kafka/kafka-clients  //Kafka包
 libraryDependencies += "org.apache.kafka" % "kafka-clients" % "0.10.2.1"
 
 // https://mvnrepository.com/artifact/org.apache.hive/hive-jdbc
 //libraryDependencies += "org.apache.hive" % "hive-jdbc" % "2.1.0"
 libraryDependencies += ("org.apache.hive" % "hive-jdbc" % "1.2.1")
 
-// https://mvnrepository.com/artifact/javax.inject/javax.inject
+// https://mvnrepository.com/artifact/javax.inject/javax.inject  依赖注入
 libraryDependencies += "javax.inject" % "javax.inject" % "1"
+
+// https://mvnrepository.com/artifact/org.jsoup/jsoup   解析HTML
+libraryDependencies += "org.jsoup" % "jsoup" % "1.11.3"
+
+// https://mvnrepository.com/artifact/org.apache.spark/spark-mllib  算法相关内容学习
+libraryDependencies += "org.apache.spark" %% "spark-mllib" % "2.3.0"
+
 
 // 发布包合并策略
 // :=是特有方法吗？

@@ -4,8 +4,10 @@ package info.aoye.scala
   * 使用字符串
   * 1. 字符串是不可变对象,在做相应的操作之后需要定义一个新对象来接收,如果需要使用可变内容,可以先了解StringBuilder
   * 2. RichString序列,它的类型是Seq[Char].因为Predef包含了从String到RichString的隐式转换,所以你可以把任何字符串当作Seq[Char]
+  * 3. 字符串下标是从0开始的,最后一个需要-1 ,留意空格字符,从表面上是看不出来的.
   */
-object TestString extends scala.App {
+object
+TestString extends scala.App {
 
   //定义字符串
   val str0 = "duchaoqun" //可以不用指定类型

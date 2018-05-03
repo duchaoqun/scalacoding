@@ -8,13 +8,13 @@ import scala.math._
 
 /**
   * 1. scala程序的入口点,需要是object类型,然后里面有main方法
-  * 2. scala程序的入口点,也可以直接继承App特质
+  * 2. scala程序的入口点,也可以直接继承App特质 object Test extends App
   *
   * @since 那个版本
   */
 object Main {
 
-  //程序的入口点
+  //程序的入口点,仅带一个参数Array[String]，且结果类型为Unit）的单例对象
   def main(args: Array[String]): Unit = {
 
     //Scala中的数学方法
