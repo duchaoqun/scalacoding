@@ -52,6 +52,8 @@ object TestJdbc extends scala.App {
   } finally {
     println("Get JDBC OK.")
   }
+
+
   //执行插入语句
   //TODO：需要实际搞一搞
   //    try {

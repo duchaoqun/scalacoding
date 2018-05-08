@@ -1,5 +1,8 @@
 package info.aoye.scala.collection.immutable
 
+/**
+  * https://blog.csdn.net/jasonding1354/article/details/51378140
+  */
 object MainVector extends scala.App {
   //向量？
   val a = Vector(1, 2, 3, 4, 5)

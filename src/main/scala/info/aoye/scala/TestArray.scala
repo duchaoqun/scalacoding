@@ -48,8 +48,17 @@ object TestArray extends scala.App {
   //从下标2开始删除3个元素
   ab1.remove(2, 3)
 
+  ab1.sum //计算集合元素内的和.
+
   //在缓冲准备完整之后，使用toArray转换成数组来使用
   ab1.toArray
   //也可以直接把数组改变成Buffer进行操作
   num_3.toBuffer
+
+  val array1 = Array(1, 2, 3)
+  val array2 = Array(4, 5, 6)
+
+  array1.zipAll(array2, 0, 0).map(x => println(x))
+  val c = array1.zipAll(array2, 0, 0).map((x_w) => x_w._1 * x_w._2).sum / 3.toFloat
+
 }

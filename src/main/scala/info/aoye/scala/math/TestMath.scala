@@ -1,6 +1,7 @@
 package info.aoye.scala.math
 
 import math._
+import java.lang.Math.sqrt
 
 /**
   * scala中基本的数学计算方法.

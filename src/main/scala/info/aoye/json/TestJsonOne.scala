@@ -10,14 +10,14 @@ case class Place(name: String, location: Location, residents: Seq[Resident])
 
 /**
   * Scala借助libraryDependencies += "com.typesafe.play" %% "play-json" % "2.6.9" 包 操作json对象.
-  * 1. 字符串 创建 JsValue
-  * 2. JsValue 转换成 字符串
-  * 3. Object 转换成 JsValue
-  * 4. JsValue 转换成 Object
+  * 1. 用字符串创建JsValue, 使用Js相关的对象创建JsValue, 基本类型转换JsValue
+  * 2. Object 转换成 JsValue
+  * 3. JsValue 转换成 Object
+  * 4. JsValue 转换成 字符串,获取jsonStr
   */
 object TestJsonOne extends scala.App {
 
-  //方式1:使用字符串创建一个String对象.
+  //1. 使用字符串创建一个JsValue对象.
   val json1: JsValue = Json.parse(
     """
       {
@@ -39,7 +39,7 @@ object TestJsonOne extends scala.App {
       """
   )
 
-  //方式2:使用Js相关的对象创建JsValue,其实可以不使用JsArray这样的对象,直接使用字符即可(官方已经对基本类型做了隐式转换).
+  //1. 使用Js相关的对象创建JsValue,其实可以不使用JsArray这样的对象,直接使用字符即可(官方已经对基本类型做了隐式转换).
   val json2: JsValue = JsObject(Seq(
     "name" -> JsString("Watership Down"),
     "location" -> JsObject(Seq("lat" -> JsNumber(51.235685), "long" -> JsNumber(-1.309197))),
@@ -57,7 +57,7 @@ object TestJsonOne extends scala.App {
     ))
   ))
 
-  //方式3: 使用隐式转换
+  //1. 使用隐式转换
   val json3: JsValue = Json.obj(
     "name" -> "Watership Down",
     "location" -> Json.obj("lat" -> 51.235685, "long" -> -1.309197),
@@ -75,7 +75,7 @@ object TestJsonOne extends scala.App {
     )
   )
 
-  //基本类型转换JsValue,这里调用的是隐式转换的方法实现的.
+  //1. 基本类型转换JsValue,这里调用的是隐式转换的方法实现的.
   val jsonString = Json.toJson("Fiver")
   val jsonNumber = Json.toJson(4)
   val jsonBoolean = Json.toJson(false)
@@ -83,7 +83,7 @@ object TestJsonOne extends scala.App {
   val jsonArrayOfStrings = Json.toJson(List("Fiver", "Bigwig"))
 
 
-  //将对象转换成Json,这里需要自定义隐式转换的方法,然后就可以自由调用toJson, 来将对象直接转换成json了.
+  //2. 将对象转换成Json,这里需要自定义隐式转换的方法,然后就可以自由调用toJson, 来将对象直接转换成json了.
   implicit val locationWrites: Writes[Location] = new Writes[Location] {
     def writes(location: Location): JsObject = Json.obj(
       "lat" -> location.lat,
@@ -120,6 +120,35 @@ object TestJsonOne extends scala.App {
   val json4: JsValue = Json.toJson(place)
   println(json4) //{"name":"Watership Down","location":{"lat":51.235685,"long":-1.309197},"residents":[{"name":"Fiver","age":4,"role":null},{"name":"Bigwig","age":6,"role":"Owsla"}]}
 
+  //3. JsValue转换成对象,必须隐式定义Read[T] 中的T为你需要的类型.
+  import play.api.libs.functional.syntax._
+
+  implicit val locationReads: Reads[Location] = ( //定义隐式转换,
+    (JsPath \ "lat").read[Double] and
+      (JsPath \ "long").read[Double]
+    ) (Location.apply _)
+
+  implicit val residentReads: Reads[Resident] = (
+    (JsPath \ "name").read[String] and
+      (JsPath \ "age").read[Int] and
+      (JsPath \ "role").readNullable[String]
+    ) (Resident.apply _)
+
+  implicit val placeReads: Reads[Place] = (
+    (JsPath \ "name").read[String] and
+      (JsPath \ "location").read[Location] and
+      (JsPath \ "residents").read[Seq[Resident]]
+    ) (Place.apply _)
+
+  val placeResult: JsResult[Place] = json4.validate[Place]
+  // JsSuccess(Place(...),)
+
+  val residentResult: JsResult[Resident] = (json4 \ "residents") (1).validate[Resident]
+  // JsSuccess(Resident(Bigwig,6,Some(Owsla)),)
+
+  //获取对象
+  placeResult.get
+  residentResult.get
 
   //遍历JsValue结构
   //使用单一路径进行访问,让JsValue返回一个JsObject或者JsArray的索引
@@ -185,33 +214,7 @@ object TestJsonOne extends scala.App {
   )
 
 
-  //JsValue转换成对象,必须隐式定义Read[T] 中的T为你需要的类型.
-  import play.api.libs.functional.syntax._
 
-  implicit val locationReads: Reads[Location] = (
-    (JsPath \ "lat").read[Double] and
-      (JsPath \ "long").read[Double]
-    ) (Location.apply _)
 
-  implicit val residentReads: Reads[Resident] = (
-    (JsPath \ "name").read[String] and
-      (JsPath \ "age").read[Int] and
-      (JsPath \ "role").readNullable[String]
-    ) (Resident.apply _)
 
-  implicit val placeReads: Reads[Place] = (
-    (JsPath \ "name").read[String] and
-      (JsPath \ "location").read[Location] and
-      (JsPath \ "residents").read[Seq[Resident]]
-    ) (Place.apply _)
-
-  val placeResult: JsResult[Place] = json4.validate[Place]
-  // JsSuccess(Place(...),)
-
-  val residentResult: JsResult[Resident] = (json4 \ "residents") (1).validate[Resident]
-  // JsSuccess(Resident(Bigwig,6,Some(Owsla)),)
-
-  //获取对象
-  placeResult.get
-  residentResult.get
 }

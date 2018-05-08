@@ -6,6 +6,7 @@ version := "0.0.1"
 
 //定义Scala版本
 scalaVersion := "2.11.8"
+//scalaVersion := "2.12.6"
 
 //定义组织名称
 organization := "info.aoye"

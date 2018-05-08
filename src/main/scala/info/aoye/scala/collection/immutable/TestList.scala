@@ -57,4 +57,5 @@ object TestList extends scala.App {
   val list8: List[Int] = List(5, 7, 9, 3, 1, 2, 3, 4)
   println(list8.sortWith((x, y) => x > y))  //List(9, 7, 5, 4, 3, 3, 2, 1) 使用自己定义的方法进行,可以对复杂对象排序
   println(list8.sorted)
+  println(list8.sum)  //计算列表中所有数字的和
 }
