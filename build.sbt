@@ -36,9 +36,17 @@ providedDeps match {
   }
 }
 
-// 添加多个依赖包
+// 添加多个依赖包,
 libraryDependencies ++= Seq(
-  "com.typesafe" % "config" % "1.3.1"
+  "com.typesafe" % "config" % "1.3.1"   //配置文件内容
+)
+
+//jdbc持久层框架
+libraryDependencies ++= Seq(
+  "com.typesafe.slick" %% "slick" % "3.2.3",
+  "org.slf4j" % "slf4j-nop" % "1.6.4",
+  "com.typesafe.slick" %% "slick-hikaricp" % "3.2.3",
+  "com.typesafe.slick" %% "slick-codegen" % "3.2.3"
 )
 
 // 添加单个依赖包
