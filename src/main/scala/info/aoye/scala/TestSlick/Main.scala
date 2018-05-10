@@ -100,6 +100,12 @@ object Main extends scala.App {
     Await.result(db.run(queryAction2).map(result => println(result)), Duration.Inf) //使用Where条件,等于
     Await.result(db.run(queryAction3).map(result => println(result)), Duration.Inf) //直接执行SQL语句
 
+    //1. Slick的查询可以直接通过TableQuery操作，使用TableQuery提供的filter可以实现过滤操作，使用drop和take完成分页操作，使用sortBy完成排序操作。
+    val res1 = Await.result(db.run(queryAction3).map(_.foreach { //返回的是一个结果集(Vector[T]对象?) 然后执行Vector的freach方法,处理每一行
+      case (id, name) => println("id:" + id + " name:" + name)
+    }), Duration.Inf)
+    //2. 使用drop和take完成分页操作,使用sortBy完成排序操作 todo 这里需要研究一下.
+    val res4 = Await.result(db.run(GaodeWeatherinfo.drop(1).take(2).sortBy(_.id.desc).result), Duration.Inf)
     //手动指定返回
     //val res6 = Await.result(db.run(queryAction3), Duration.Inf)
     //res6
@@ -131,6 +137,13 @@ object Main extends scala.App {
     db.run(insertAction3)
   }
 
+  //测试代码:执行更新操作
+  val new_row = GaodeWeatherinfoRow(6, Some("吉林"), Some("长春市"), Some("220100"), Some("多云"), Some("18"), Some("东北"), Some("5"), Some("24"), Some("2018-05-08 17:00:00"))
+  val res4 = Await.result(db.run(GaodeWeatherinfo.filter(_.id === new_row.id).update(new_row)), Duration.Inf) // return effected row numbers
+
+  //测试代码:执行删除操作
+  val res5 = Await.result(db.run(GaodeWeatherinfo.filter(_.id === "999").delete), Duration.Inf)
+
   insertWeatherInfo()
   /*
       //新增
@@ -146,23 +159,7 @@ object Main extends scala.App {
       }
       db.run(insertAndPrintAction)
 
-      //删除
 
-      //修改
-
-      //查询操作
-      //1. Slick的查询可以直接通过TableQuery操作，使用TableQuery提供的filter可以实现过滤操作，使用drop和take完成分页操作，使用sortBy完成排序操作。
-      val res2 = Await.result(db.run(suppliers.result).map(_.foreach { //返回的是一个结果集(难道只有一个对象?) 然后遍历结果集,处理每一行.
-        case (id, name) => println("id:" + id + " name:" + name)
-      }), Duration.Inf)
-      //2. 使用filter实现where条件过滤.
-      val res3 = Await.result(db.run(suppliers.filter(_.id > 10.toLong).filter(_.id < 12.toLong).result).map(_.foreach { //返回的是一个结果集(Vector[T]对象?) 然后执行Vector的freach方法,处理每一行.
-        case (id, name) => println("id1:" + id + " name1:" + name)
-      }), Duration.Inf)
-      //3. 使用drop和take完成分页操作,使用sortBy完成排序操作
-      val res4 = Await.result(db.run(suppliers.drop(1).take(2).sortBy(_.id.desc).result).map(_.foreach { //返回的是一个结果集(难道只有一个对象?) 然后遍历结果集,处理每一行.
-        case (id, name) => println("id2:" + id + " name2:" + name)
-      }), Duration.Inf)
 
     } finally db.close()
   */
