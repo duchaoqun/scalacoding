@@ -3,12 +3,14 @@ package info.aoye.scala
 /**
   * 1. scala中的基本数据类型
   * 2. scala拥有和java一样的数据类型,和java的数据类型的内存布局完全一致,精度也完全一致.
+  * 3. 在类中,字段和方法笼统的被称为成员member,不管是val还是var
+  * 4. 字段的另外一个说法是实例变量instance variable
   */
 object TestDataType extends App {
 
   //构造单个基本对象
-  var value1: Int = 123  //构造一个Int类型 变量
-  val value2: Int = 123  //构造一个Int类型 常量
+  var value1: Int = 123  //构造一个Int类型 变量 过程编程使用var,是可变的结构
+  val value2: Int = 123  //构造一个Int类型 常量 函数式编程使用val，是一个不可变化的结构
 
   //构造多个基本对象
   val int1, int2: Int = 100
@@ -56,4 +58,12 @@ object TestDataType extends App {
   //基本类型的伴生对象(Object)?
   println(Long.MaxValue)
   println(Long.MinValue)
+
+  println(0 to 10)  //这里的to实际上是仅带一个int参数的方法，代码 0 to 2 被转换成方法{0}.to{2}。这个方法只有在明确指定方法调用的接受者时才有效。
+
+  //todo 这里的for方法说明了scala的另外一个基本原则：方法若只有一个参数  i，调用的时候就可以省略点和括号。
+
+  //从技术层面上来说，Scala没有操作符重载，它根本没有传统意义上的操作符，取而代之的是诸如 + - * / 这样的字符，可以用来做方法名。
+  //如在交互解释器中，1 + 2 实际上是在Int对象1 上调用名为+的方法，把Int对象 2作为参数传递给它 (1).+(2)。
+
 }

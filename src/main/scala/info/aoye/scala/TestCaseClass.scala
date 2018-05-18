@@ -9,7 +9,7 @@ case class ABCException(msg: String) extends Exception
   * 所以说Case Class的一个典型应用场景就是DTO
   *
   *   - 伴生对象自动包含apply方法，代替new方式声明对象
-  *   - 伴生对象自动版本unapply方法，
+  *   - 伴生对象自动包含unapply方法，
   */
 object TestCaseClass extends App {
 
