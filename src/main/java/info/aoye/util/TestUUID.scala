@@ -1,4 +1,4 @@
-package info.aoye.java.util
+package info.aoye.util
 
 object TestUUID extends scala.App {
   //生成通用唯一识别码(UUID)

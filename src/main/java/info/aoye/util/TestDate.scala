@@ -1,4 +1,4 @@
-package info.aoye.java.util
+package info.aoye.util
 
 import java.text.SimpleDateFormat
 import java.util.{Calendar, Date}

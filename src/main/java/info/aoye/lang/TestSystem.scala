@@ -1,4 +1,4 @@
-package info.aoye.java.lang
+package info.aoye.lang
 
 import java.lang.System
 

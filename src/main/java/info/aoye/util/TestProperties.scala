@@ -1,4 +1,4 @@
-package info.aoye.java.util
+package info.aoye.util
 
 import java.io.FileInputStream
 import java.util.Properties

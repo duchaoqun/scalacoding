@@ -1,9 +1,4 @@
-package info.aoye.java
-
-import java.io.FileInputStream
-import java.io.File
-import java.util.ResourceBundle
-import java.util.Properties
+package info.aoye
 
 object UtilResourceBundle {
 

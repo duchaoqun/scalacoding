@@ -1,4 +1,4 @@
-package info.aoye.java.lang.management
+package info.aoye.lang.management
 
 import java.lang.management.ManagementFactory
 
