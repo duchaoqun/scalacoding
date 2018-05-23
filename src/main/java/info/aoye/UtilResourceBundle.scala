@@ -1,5 +1,8 @@
 package info.aoye
 
+import java.io.{File, FileInputStream}
+import java.util.Properties
+
 object UtilResourceBundle {
 
   def main(args: Array[String]): Unit = {
