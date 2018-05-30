@@ -1,5 +1,11 @@
 package info.aoye.scala
 
+
+/**
+  *  scala 中默认就是val类型,不需要再使用val进行声明.
+  * @param address
+  * @param port
+  */
 case class Host(address: String, port: Int)
 
 case class ABCException(msg: String) extends Exception
