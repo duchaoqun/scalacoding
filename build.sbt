@@ -4,10 +4,8 @@ version := "0.1"
 
 scalaVersion := "2.12.6"
 
-
 //定义组织名称
 organization := "info.aoye"
-
 
 // 引用Spark相关的包的版本号
 val sparkVersion = "2.2.0"
@@ -94,3 +92,9 @@ libraryDependencies += "org.jsoup" % "jsoup" % "1.11.3"
 
 // https://mvnrepository.com/artifact/org.apache.spark/spark-mllib  算法相关内容学习
 //libraryDependencies += "org.apache.spark" %% "spark-mllib" % "2.3.0"
+
+// https://mvnrepository.com/artifact/org.jsoup/jsoup
+libraryDependencies += "org.jsoup" % "jsoup" % "1.11.3"
+
+// https://mvnrepository.com/artifact/org.apache.commons/commons-email
+libraryDependencies += "org.apache.commons" % "commons-email" % "1.5"
