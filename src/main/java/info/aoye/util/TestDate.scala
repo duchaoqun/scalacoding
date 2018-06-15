@@ -11,17 +11,18 @@ object TestDate extends scala.App {
 
 
   //返回当前的计算机时间，时间的表达格式为当前计算机时间和GMT时间(格林威治时间)1970年1月1号0时0分0秒所差的毫秒数。
-  val time1 = System.currentTimeMillis()  //单位ms 1522376351710
-  val time2 = System.nanoTime()  //单位ns 14211563480827
+  val time1 = System.currentTimeMillis() //单位ms 1522376351710
+  val time2 = System.nanoTime() //单位ns 14211563480827
 
   println(time1)
   println(time2)
 
   /**
     * 获取操作系统当前时间
+    *
     * @return yyyy-MM-dd HH:mm:ss
     */
-  def getCurrentSystemTime():String = {
+  def getCurrentSystemTime(): String = {
     val now = System.currentTimeMillis()
     val format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
     val dateNow = new Date(now)
@@ -30,6 +31,7 @@ object TestDate extends scala.App {
 
   /**
     * 获取操作系统当前时间
+    *
     * @return yyyy-MM-dd HH:mm:ss
     */
   def getCurrentTime(): String = (new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()))
@@ -70,6 +72,7 @@ object TestDate extends scala.App {
 
   /**
     * 接收两个时间字符串，然后计算时间差
+    *
     * @param timeA yyyy-MM-dd HH:mm:ss
     * @param timeB yyyy-MM-dd HH:mm:ss
     * @return 0天0小时0分钟36秒
@@ -85,4 +88,26 @@ object TestDate extends scala.App {
     val second: Long = between % 60
     day + "天" + hour + "小时" + minute + "分钟" + second + "秒"
   }
+
+  /**
+    * 将UTC时间转换成本地时间
+    * @param UTCStr UTC时间字符串
+    * @return 东八区时间
+    */
+  def parseUTC2Local(UTCStr: String): String = {
+    //val date: Date = null
+    val format = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+    val sdf: SimpleDateFormat = new SimpleDateFormat(format)
+    val date = sdf.parse(UTCStr)
+    println("UTC时间: " + date)
+    val calendar:Calendar = Calendar.getInstance()
+    calendar.setTime(date)
+    calendar.set(Calendar.HOUR, calendar.get(Calendar.HOUR) + 8)
+    //calendar.getTime() 返回的是Date类型，也可以使用calendar.getTimeInMillis()获取时间戳
+    System.out.println("北京时间: " + calendar.getTime())
+    val aaa = calendar.getTime()
+    new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(aaa)
+  }
+
+  println(parseUTC2Local("2018-06-13T02:25:14.698Z"))
 }

@@ -12,7 +12,8 @@ object TestSystemShell extends scala.App {
   val int2 = """/home/aoye/Documents/bash/test.sh -- "2018-04-16 12:12:12" """.!!
   val int3 = """/home/aoye/Documents/bash/test.sh -- "2018-04-16 12:12:12" """.!
   println(int2)
-  //解决办法:使用Seq来操作.
+  //解决办法:使用Seq来操作
+  //使用seq的方式会自动在参数直接添加空格,不需要手动在字符串两边拼空格.
   val int4 = Seq("/home/aoye/Documents/bash/test.sh","--","2018-04-16 12:12:12").!!
   print(int4)
 
