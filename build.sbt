@@ -1,8 +1,8 @@
-name := "Scala2.12.6"
+name := "Scala2.11.12"
 
 version := "0.1"
 
-scalaVersion := "2.12.6"
+scalaVersion := "2.11.12"
 
 //定义组织名称
 organization := "info.aoye"

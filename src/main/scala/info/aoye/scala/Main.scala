@@ -13,12 +13,25 @@ import scala.math._
 /**
   * 1. scala程序的入口点,需要是object类型,然后里面有main方法
   * 2. scala程序的入口点,也可以直接继承App特质 object Test extends App
-  *
+  * 3. object类型里面所有的成员都是静态的(scala 中的静态类)
   * @since 那个版本
   */
 object Main {
 
-  //程序的入口点,仅带一个参数Array[String]，且结果类型为Unit）的单例对象
+  /**
+    * 1. 程序的入口点,仅带一个参数Array[String],且返回类型为Unit的单例对象
+    * 2. 关键字def,定义方法或者是函数.
+    * 3. 这里的main是方法,因为他不具备函数特征.
+    * 4. Unit类型,类似于java中的void类型.
+    * 5. = 符号表示main的方法体在等号的右边.
+    * 6. 方法体一般用{}来封装,里面可以包含很多条语句.默认情况下,最后一条语句的结果类型就是代码块的返回类型.
+    * 7. 技巧: 如果方法的返回类型是Unix,这时就可以省略定义结构中的" :Unit = "
+    * 9. 说明: scala比较底层的内容会调用java来实现. IO 线程Thread 数据源等.
+    * 10. 按照目前OS的原理,main入口方法都是运行在主线程中的. OS的运行分为Kernel Space 和User Space,应用程序是运行在UserSpace中的,应用程序Scala所在的进程一般都是透过OS Fork出来的,
+    *     被Fork出来的应用程序进程默认会有主线程,而我们的main方法就是默认在主线程中的.
+    * 11.
+    * @param args 参数名和参数类型,字符串数组
+    */
   def main(args: Array[String]): Unit = {
 
     //Scala中的数学方法

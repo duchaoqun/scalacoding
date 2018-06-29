@@ -1,3 +1,5 @@
+package info.aoye.scala.TestSlick
+
 import java.util.concurrent.TimeUnit
 import slick.codegen.SourceCodeGenerator
 import slick.jdbc.MySQLProfile

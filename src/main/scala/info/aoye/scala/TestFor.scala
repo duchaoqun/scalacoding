@@ -1,13 +1,15 @@
 package info.aoye.scala
 
 /**
-  * Scala没有与 for（初始化变量,检查变量是否满足某条件,更新变量）循环直接对应的结构.
-  * 注意:至于这个遍历具体如何执行,则取决于表达式的类型.
-  * 注意:在Scala里面,对循环的使用并没有其他语言那么频繁.
+  * Scala 没有与 for（初始化变量,检查变量是否满足某条件,更新变量）循环直接对应的结构.
+  * 1. for具体能取到什么内容,则取决后面表达式的类型(String就是每个字符,集合类型就是每个对象).
+  * 2. 在Scala里面,对循环的使用并没有其他语言那么频繁.
+  * 3. 想要跳出for循环,可以使用if条件守卫,也可以使用return关键字.
   */
 object TestFor extends scala.App {
+  // <- 是提取符号,获取对象里面的数值.
   val strArray = Array("one", "two", "three")
-  for (i <- strArray.indices) {  //todo indices 返回一个Range,里面是所引值?
+  for (i <- strArray.indices) { //todo indices 返回一个Range,里面是所引值?
     println(strArray(i))
   }
   // Scala 中的for循环结构
@@ -43,4 +45,20 @@ object TestFor extends scala.App {
   println(a.getClass)
   println(a)
 
+  // 案例:for中添加if条件守卫,用于限制for循环(优化for循环,或者用于跳出for循环)
+  var flag1 = true
+  var sum1 = 0
+  for (i <- 0 to 10 if flag1) {
+    sum1 = sum1 + i
+    if (i == 5) flag1 = false
+  }
+
+  // 案例:使用return跳出循环.
+  def sum2(): Unit ={
+    var sum2 = 0
+    for (i <- 0 to 10) {
+      sum1 = sum1 + i
+      if (i == 5) return // return 是方法级别的,这里需要注意.
+    }
+  }
 }
