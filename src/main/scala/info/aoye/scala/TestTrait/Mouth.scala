@@ -4,7 +4,7 @@ package info.aoye.scala.TestTrait
   * 定义一个Trait
   */
 trait Mouth {
-  //在Trait中定义属性(不包含值)需要在子类提供实现的值.
+  //在Trait中定义属性(不包含值)需要在子类提供实现的值. 这就是抽象的属性
   val size: String  //大嘴 小嘴
 
   //在Trait中定义属性(含值)

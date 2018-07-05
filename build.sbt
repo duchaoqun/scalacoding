@@ -58,7 +58,8 @@ libraryDependencies += "com.typesafe.play" %% "play-json" % "2.6.9"
 
 // MySQL驱动
 // https://mvnrepository.com/artifact/mysql/mysql-connector-java
-libraryDependencies += "mysql" % "mysql-connector-java" % "5.1.46"
+//libraryDependencies += "mysql" % "mysql-connector-java" % "5.1.46"
+libraryDependencies += "mysql" % "mysql-connector-java" % "8.0.11"
 
 // 命令行参数
 // https://mvnrepository.com/artifact/commons-cli/commons-cli

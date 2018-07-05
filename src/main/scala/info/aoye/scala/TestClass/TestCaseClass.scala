@@ -1,8 +1,8 @@
-package info.aoye.scala
-
+package info.aoye.scala.TestClass
 
 /**
   *  scala 中默认就是val类型,不需要再使用val进行声明.
+ *
   * @param address
   * @param port
   */

@@ -1,4 +1,4 @@
-package info.aoye.scala
+package info.aoye.scala.TestClass
 
 class TestThis {
   var id: Int = 0

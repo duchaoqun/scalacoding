@@ -5,6 +5,7 @@ package info.aoye.scala
   * 1. 元组也是不可变的,但与列表不同的是元组可以包含不同类型的元素,注：该元组的类型由其保存的内容决定。
   * 2. 元组只能包含22个元素!?  scala根包中有tuple1 -> tuple22
   * 3. 元组的下标是从1开始的.
+  * 4. 一个重要的作用就是用作函数的返回值,在Tuple中返回若干值.
   */
 object TestTuple extends scala.App {
 
