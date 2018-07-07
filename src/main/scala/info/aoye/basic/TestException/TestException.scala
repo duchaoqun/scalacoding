@@ -1,14 +1,21 @@
-package info.aoye.basic.util.control
+package info.aoye.basic.TestException
 
-import scala.util.control.Exception._
-import scala.util.control.Exception.Catch
+import java.io.IOException
 import java.net._
 
 import scala.util.Try
+import scala.util.control.Exception.{Catch, _}
 
 object TestException extends scala.App {
 
-  // 创建一个Catch对象，用来处理指定的异常
+  try{
+    1/0
+  }catch{
+    case ioException:IOException => println(ioException.getMessage)
+    case illegalArgs:IllegalArgumentException => println(illegalArgs.getMessage)
+  }
+
+  // 创建一个Catch对象, 用来处理指定的异常
   // TODO:特定的异常都有那些？
   val s = "http://www.scala-org.org"
 

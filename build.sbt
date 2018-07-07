@@ -73,8 +73,8 @@ libraryDependencies += "io.netty" % "netty-all" % "4.0.43.Final"
 //多线程
 libraryDependencies += "org.scala-lang" % "scala-actors" % "2.11.8"
 // https://mvnrepository.com/artifact/com.typesafe.akka/akka-actor
-libraryDependencies += "com.typesafe.akka" %% "akka-actor" % "2.5.11"
-
+//libraryDependencies += "com.typesafe.akka" %% "akka-actor" % "2.5.11"
+libraryDependencies += "com.typesafe.akka" %% "akka-actor" % "2.5.13"
 
 libraryDependencies += "com.github.nscala-time" %% "nscala-time" % "2.18.0"
 
@@ -99,3 +99,4 @@ libraryDependencies += "org.jsoup" % "jsoup" % "1.11.3"
 
 // https://mvnrepository.com/artifact/org.apache.commons/commons-email
 libraryDependencies += "org.apache.commons" % "commons-email" % "1.5"
+

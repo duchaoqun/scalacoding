@@ -22,7 +22,7 @@ object TestImplicit extends scala.App {
 
   // 隐式的转换类型
 
-
+  import info.aoye.basic.TestImplicit.Implicits._
   //示例1: 隐式转换类型.
   //1. 定义隐式方法,也可以从其他地方引入隐式方法,例如scalaApi,它居然做了不可描述的事情(+1)
   //2. 从Double类型转换到Int类型
@@ -36,7 +36,7 @@ object TestImplicit extends scala.App {
 
 
   //示例3: 隐式类
-  import TestImplicitClass._  //导入隐式类里面所有的隐式内容
+  //导入隐式类里面所有的隐式内容
   println(1.add(2))  //在当前作用域中寻找 将Int（1） 作为变量的类同时具有add 的方法的类，如有，则执行
 
   //todo https://blog.csdn.net/a2011480169/article/details/52999745
