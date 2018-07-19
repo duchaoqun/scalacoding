@@ -3,11 +3,14 @@ package info.aoye.basic.sys.process
 import java.io.File
 import java.net.URL
 
+// 首先需要导入这个包
 import scala.sys.process._
 
 /**
   * 执行系统命令
-  * 1、在执行系统命令的代码行后面需要空一个空行，不知道为什么
+  * 1. 在执行系统命令的代码行后面需要空一个空行，不知道为什么
+  * 2. 工作原理: Scala是基于JVM进程的, Scala程序运行的时候会运行在JVM进程中, 而JVM是OS的一个普通进程, 通过JVM可以直接和
+  *    OS进行交互, 而OS中有例如启动进程等功能, 所以!!!
   */
 object TestSystem extends scala.App {
   //执行系统命令，等待该命令执行完毕后返回结果，然后在继续执行下面的代码

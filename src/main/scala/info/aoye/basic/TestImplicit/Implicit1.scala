@@ -32,4 +32,6 @@ object Implicit1 extends scala.App {
   }
   ifConfig("172.17.2.16")
   ifConfig("172.17.2.17")("114.114.114.114")
+
+  //implicitly //todo 这个是干什么用的?
 }

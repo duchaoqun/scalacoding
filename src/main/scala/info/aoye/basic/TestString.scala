@@ -9,8 +9,8 @@ package info.aoye.basic
 object
 TestString extends scala.App {
 
-  //定义字符串
-  val str0 = "duchaoqun" //可以不用指定类型
+  //声明一个字符串
+  val str0 = "Hello? No!" //可以不用指定类型
   val str1: String = "Hello" //指定类型
   val str2: String = "World"
   val str8 = "我是中国人啊啊啊！"
@@ -43,9 +43,9 @@ TestString extends scala.App {
   val str6 = "Just do it!" :: Nil // 将一个字符串类型，转换成一个列表类型
   str1.distinct // 获取字符串中不重复的字符
 
-  // 提取第几个字符，如下两个方式都可以，可以吧()理解为apply的方法重载。
-  str1.apply(4) // 申请第四个字符内容，() 操作符其实是重载了apply方法，下标是以0开始的
-  str1(4) // 注意偶尔() 会跟隐式参数冲突，所以尽量使用apply方法
+  // 提取第几个字符,如下两个方式都可以
+  str1.apply(4) // 申请第四个字符内容
+  str1(4) // ()操作符其实是重载了apply方法,下标是以0开始的, 注意偶尔()会跟隐式参数冲突, 所以尽量使用apply方法
 
   str1.take(1) //  获取字符串最前面“1”个字符，可以获取多个字符，下标是以1开始的
   val str7 = str1.sorted

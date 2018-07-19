@@ -1,6 +1,6 @@
 package info.aoye.basic
 
-//1. Scala类继承结构中最底层的.所有运行环境中的Scala类都是直接或间接继承自Any这个类
+//1. Scala类继承结构中最顶层的.所有运行环境中的Scala类都是直接或间接继承自Any这个类
 
 trait Printable extends Any {
   def print(): Unit = println(this)

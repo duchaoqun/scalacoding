@@ -24,7 +24,7 @@ object TestFor extends scala.App {
     sum += s(i)
   }
 
-  // 高级的for， 使用<- 来定义一个生成器，实际上是两个循环过程
+  // 高级的for, 使用<- 来定义一个生成器，实际上是两个循环过程
   for (i <- 1 to 3; j <- 1 to 3) {
     println(10 * i + j)
   }
@@ -39,7 +39,7 @@ object TestFor extends scala.App {
 
   }
 
-  // for推倒式   for comprehension!
+  // for推倒式   for comprehension!  使用关键字yield, 返回的是Vector
   //TODO： for 推倒式 这里需要详细学习一下。
   val a = for (i <- 1 to 10) yield i % 3
   println(a.getClass)

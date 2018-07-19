@@ -99,4 +99,3 @@ libraryDependencies += "org.jsoup" % "jsoup" % "1.11.3"
 
 // https://mvnrepository.com/artifact/org.apache.commons/commons-email
 libraryDependencies += "org.apache.commons" % "commons-email" % "1.5"
-

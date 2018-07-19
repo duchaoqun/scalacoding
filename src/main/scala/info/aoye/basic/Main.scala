@@ -13,12 +13,18 @@ package info.aoye.basic
   * 4. 引入一个包的所有内容需要添加._ 标记, 例如scala.math._
   */
 
+import java.lang._  //默认导入
+import scala._      //默认导入
+import Predef._     //默认导入: 包含大部分基本的转换
+
 import scala.math._
+
 
 /**
   * 1. scala程序的入口点,需要是object类型,然后里面有main方法
   * 2. scala程序的入口点,也可以直接继承App特质 object Test extends App
   * 3. object类型里面所有的成员都是静态的(scala 中的静态类)
+  *
   * @since 那个版本
   */
 object Main {
@@ -33,11 +39,15 @@ object Main {
     * 7. 技巧: 如果方法的返回类型是Unix,这时就可以省略定义结构中的" :Unit = "
     * 9. 说明: scala比较底层的内容会调用java来实现. IO 线程Thread 数据源等.
     * 10. 按照目前OS的原理,main入口方法都是运行在主线程中的. OS的运行分为Kernel Space 和User Space,应用程序是运行在UserSpace中的,应用程序Scala所在的进程一般都是透过OS Fork出来的,
-    *     被Fork出来的应用程序进程默认会有主线程,而我们的main方法就是默认在主线程中的.
+    * 被Fork出来的应用程序进程默认会有主线程,而我们的main方法就是默认在主线程中的.
     * 11.
+    *
     * @param args 参数名和参数类型,字符串数组
     */
   def main(args: Array[String]): Unit = {
+
+    //赋值表达式的返回值是Unit类型,所以不能写作 val a = b =123,这里b=123返回的是Unit
+    val str0 = "Hi!"
 
     //Scala中的数学方法
     println(sqrt(2)) //Stdout：1.4142135623730951
@@ -45,6 +55,7 @@ object Main {
 
     //伴生对象(静态方法)
     //BigInt是一个类，使用BigInt的伴生对象的apply方法构建一个对象。
+    import scala.math._
     println(BigInt(123) * BigInt(123))
 
     //TODO: reduce 方法学习
@@ -88,5 +99,57 @@ object Main {
 
     map_1()
     flat_map()
+
+    // reduce 集合中第一个数减去第二个数, 结果再减去第三个数, 然后结果再减去第四个数... todo 默认就是reduceLeft??
+    println((1 to 5).reduce(_ - _))
+    println((1 to 5).reduce((a, b) => a - b))
+    println((1 to 5).reduce((a, b) => {
+      println(s"$a - $b")
+      a - b
+    }))
+
+    // reduceLeft 集合中第一个数减去第二个数, 结果再减去第三个数, 然后结果再减去第四个数...
+    println((1 to 5).reduceLeft(_ - _))
+    println((1 to 5).reduceLeft((a, b) => a - b))
+    println((1 to 5).reduceLeft((a, b) => {
+      println(s"$a - $b")
+      a - b
+    }))
+
+    // reduceRight 集合中最右边两个数相减(4-5), 然后右边第三个数减去这个结果, 然后右边第四个数再减去这个结果, ...
+    println((1 to 5).reduceRight(_ - _))
+    println((1 to 5).reduceRight((a, b) => a - b))
+    println((1 to 5).reduceRight((a, b) => {
+      println(s"$a - $b")
+      a - b
+    }))
+
+    // foldLeft 提供一个初始值10 ,然后从集合左边开始操作, 10 - 第一个元素, 然后结果再减去第二个元素, 然后结果再减去第三个元素...
+    // 实际效果: ( ( ( ( 10 - 1 ) - 2 ) - 3 ) - 4 ) - 5
+    println((1 to 5).foldLeft(10)(_ - _))
+    println((1 to 5).foldLeft(10)((a, b) => {
+      println(s"$a - $b")
+      a - b
+    }))
+
+    // foldRight 提供一个初始值, 然后集合最右边的元素减去10, 然后集合右边第二个元素减去前一步结果, 然后右边第三个元素减去前一步结果...
+    // 实际效果: 1 - ( 2 - ( 3 - ( 4 - ( 5 - 10 ) ) ) )
+    println((1 to 5).foldRight(10)(_ - _))
+    println((1 to 5).foldRight(10)((a, b) => {
+      println(s"$a - $b")
+      a - b
+    }))
+
+    // collect 返回Vector(asdf)  这个里面其实就是一个偏函数
+    println((1 to 5).collect {
+      case 1 => "asdf"
+    })
+
+    // filter 过滤, 接收一个判断, 进行过滤
+    println((1 to 5).filter(_ % 2 == 0))
+
+
+    //todo 组装注入??
+    //todo 胖接口和瘦接口!??
   }
 }

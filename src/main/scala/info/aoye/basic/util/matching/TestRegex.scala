@@ -38,4 +38,6 @@ object TestRegex extends scala.App {
     println(one)
     println(two)
   }
+
+  //todo   批评并替换  pattern1.replaceAllIn("dd")
 }

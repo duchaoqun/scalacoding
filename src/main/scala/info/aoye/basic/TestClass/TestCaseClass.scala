@@ -1,5 +1,7 @@
 package info.aoye.basic.TestClass
 
+import info.aoye.basic.TestImplicit.Animals
+
 /**
   *  scala 中默认就是val类型,不需要再使用val进行声明.
  *
@@ -45,5 +47,8 @@ object TestCaseClass extends App {
   } finally {
     println("Over")
   }
-  //
+  // todo 类继承中的 " 提前定义 "
+//  class Dog extends {
+//  }with Animals
+
 }
